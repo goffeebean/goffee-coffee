@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: goffeebean
+      POSTGRES_PASSWORD: cup-of-goffee
+      PGDATA: /data/postgres
+    volumes:
+      - db:/data/progress
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
