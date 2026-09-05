@@ -1,5 +1,6 @@
 HELP.md
 EXERCISE.md
+/.claude/settings.local.json
 
 target/
 .mvn/wrapper/maven-wrapper.jar
