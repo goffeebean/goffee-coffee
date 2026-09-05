@@ -1,4 +1,23 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: goffeebean-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/goffeebean
+      SPRING_DATASOURCE_USERNAME: goffeebean
+      SPRING_DATASOURCE_PASSWORD: cup-of-goffee
+      OLLAMA_BASE_URL: http://ollama:11434
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - ollama
+    networks:
+      - coffee
+    restart: unless-stopped
+
   db:
     container_name: postgres
     image: postgres:latest
@@ -7,16 +26,28 @@ services:
       POSTGRES_PASSWORD: cup-of-goffee
       PGDATA: /data/postgres
     volumes:
-      - db:/data/progress
+      - db:/data/postgres
     ports:
       - "5332:5432"
     networks:
-      - db
+      - coffee
+    restart: unless-stopped
+
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - coffee
     restart: unless-stopped
 
 networks:
-  db:
+  coffee:
     driver: bridge
 
 volumes:
   db:
+  ollama:

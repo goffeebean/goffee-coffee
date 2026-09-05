@@ -1,11 +1,35 @@
-###### GET request to get SWE
-GET http://localhost:8080/api/v1/software-engineers
+###### List all roasts
+GET http://localhost:8080/api/v1/roasts
 
-###### POST request to create SWE
-POST http://localhost:8080/api/v1/software-engineers
+###### Get one roast
+GET http://localhost:8080/api/v1/roasts/1
+
+###### Create a roast
+POST http://localhost:8080/api/v1/roasts
 Content-Type: application/json
 
 {
-    "name": "Brandon",
-    "techStack" : "Rust, PostgreSQL"
+    "name": "Yirgacheffe",
+    "origin": "Ethiopia",
+    "roastLevel": "LIGHT",
+    "price": 14.99,
+    "tastingNotes": "Floral, citrus"
 }
+
+###### Update a roast
+PUT http://localhost:8080/api/v1/roasts/1
+Content-Type: application/json
+
+{
+    "name": "Yirgacheffe Reserve",
+    "origin": "Ethiopia",
+    "roastLevel": "MEDIUM",
+    "price": 16.99,
+    "tastingNotes": "Blueberry, wine"
+}
+
+###### Delete a roast
+DELETE http://localhost:8080/api/v1/roasts/1
+
+###### Generate tasting notes with a local Ollama model (requires `ollama serve` running)
+POST http://localhost:8080/api/v1/roasts/1/tasting-notes/generate
