@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('engines'\\)\\); print\\(json.dumps\\(d['devDependencies'], indent=2\\)\\)\")",
+      "Bash(docker info *)",
+      "Bash(git check-ignore *)",
+      "Bash(timeout 120 ./mvnw -q compile)"
+    ]
+  }
+}
