@@ -12,7 +12,7 @@ unless explicitly asked to — the point is for the junior engineer to write the
 
 - **Backend**: `EXERCISE.md` (repo root) is the spec. Only the entity (`Roast`, `RoastLevel`),
   `RoastRepository`, and the exception classes (`RoastNotFoundException`,
-  `OllamaUnavailableException`) exist. DTOs, the mapper, `GlobalExceptionHandler`, the service,
+  `OllamaUnavailableException`) exist. DTOs, the mapper, `GlobalExceptionHandler.java`, the service,
   the controller, and all tests are unbuilt on purpose.
 - **Frontend**: `frontend/FRONTEND_EXERCISE.md` is the spec. Only tooling exists (Vite + React 19
   + TS, Tailwind v4 + DaisyUI, `src/api/types.ts`). The API client, components, and state are
@@ -31,7 +31,7 @@ Spring's static resources before packaging the jar. This was a deliberate choice
 Hub image, single container) over a two-container/nginx setup.
 
 DTOs are mandatory at the controller boundary — never return the JPA entity directly.
-`GlobalExceptionHandler` (`@RestControllerAdvice`) is the only place that builds error responses,
+`GlobalExceptionHandler.java` (`@RestControllerAdvice`) is the only place that builds error responses,
 returning a single `ApiError` shape for both 404s and validation failures.
 
 The Ollama integration is a plain HTTP call (`RestClient` to `/api/generate`) rather than a

@@ -13,7 +13,7 @@ services:
       - "8080:8080"
     depends_on:
       - db
-      - ollama
+      #- ollama
     networks:
       - coffee
     restart: unless-stopped
@@ -33,16 +33,16 @@ services:
       - coffee
     restart: unless-stopped
 
-  ollama:
-    container_name: ollama
-    image: ollama/ollama:latest
-    volumes:
-      - ollama:/root/.ollama
-    ports:
-      - "11434:11434"
-    networks:
-      - coffee
-    restart: unless-stopped
+  #ollama:
+  #  container_name: ollama
+  #  image: ollama/ollama:latest
+  #  volumes:
+  #    - ollama:/root/.ollama
+  #  ports:
+  #    - "11434:11434"
+  #  networks:
+  #    - coffee
+  #  restart: unless-stopped
 
 networks:
   coffee:
@@ -50,4 +50,4 @@ networks:
 
 volumes:
   db:
-  ollama:
+  # ollama:
