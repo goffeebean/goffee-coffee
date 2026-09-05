@@ -5,6 +5,7 @@ import com.goffeebean.dto.RoastRequest;
 import com.goffeebean.dto.RoastResponse;
 import com.goffeebean.entity.RoastLevel;
 import com.goffeebean.exception.RoastNotFoundException;
+import com.goffeebean.service.OllamaTastingNoteService;
 import com.goffeebean.service.RoastService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ class RoastControllerTest {
 
     @MockitoBean
     private RoastService roastService;
+
+    @MockitoBean
+    private OllamaTastingNoteService ollamaTastingNoteService;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

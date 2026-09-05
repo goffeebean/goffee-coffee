@@ -25,4 +25,11 @@ public class GlobalExceptionHandler {
                 "Validation failed", ex.getBindingResult().getFieldErrors().stream().map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage()).toList());
         return ResponseEntity.status(apiError.status()).body(apiError);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleOllamaUnavailable(OllamaUnavailableException ex) {
+        ApiError apiError = new ApiError(Instant.now(), 503, "Ollama Unavailable",
+                ex.getMessage(), List.of());
+        return ResponseEntity.status(apiError.status()).body(apiError);
+    }
 }
