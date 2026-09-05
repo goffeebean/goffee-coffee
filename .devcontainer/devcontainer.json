@@ -10,7 +10,7 @@
     "ghcr.io/prulloac/devcontainer-features/bun:1": {},
     "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/java:1": {
-      "version": "21",
+      "version": "none",
       "installMaven": true,
       "installGradle": true
     }
@@ -20,6 +20,6 @@
       "backend": "IntelliJ"
     }
   },
-  "forwardPorts": [5173, 8080],
+  "forwardPorts": [3000, 11434, 8080],
   "postCreateCommand": "npm install -g @anthropic-ai/claude-code"
 }
