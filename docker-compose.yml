@@ -45,11 +45,16 @@ services:
     image: ollama/ollama:latest
     volumes:
       - ollama:/root/.ollama
+      - ./ollama-entrypoint.sh:/entrypoint.sh
     ports:
       - "11434:11434"
+    dns:
+      - 9.9.9.9
+      - 1.1.1.1
     networks:
       - coffee
     restart: unless-stopped
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
 
 networks:
   coffee:
